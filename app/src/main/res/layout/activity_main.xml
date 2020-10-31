@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/river"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"/>
+
+        <ImageView
+            android:id="@+id/boat"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:src="@drawable/boat1"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="480dp" />
+
+        <ImageView
+            android:id="@+id/girl2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:src="@drawable/girl"
+            android:translationX="220dp"
+            android:translationY="650dp" />
+
+        <ImageView
+            android:id="@+id/girl1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:src="@drawable/girl"
+            android:translationX="160dp"
+            android:translationY="650dp" />
+
+        <ImageView
+            android:id="@+id/vampire1"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:src="@drawable/vampire"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="560dp" />
+
+        <ImageView
+            android:id="@+id/vampire2"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:src="@drawable/vampire"
+            android:translationX="220dp"
+            android:translationY="560dp"
+            tools:ignore="DuplicateIds" />
+
+        <ImageView
+            android:id="@+id/vampire3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:src="@drawable/vampire"
+            android:translationX="280dp"
+            android:translationY="560dp"
+            tools:ignore="DuplicateIds" />
+
+        <ImageView
+            android:id="@+id/girl3"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:src="@drawable/girl"
+            android:translationX="280dp"
+            android:translationY="650dp" />
+
+        <Button
+            android:id="@+id/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="600dp"
+            android:layout_marginLeft="20dp"
+            android:text="Go" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="302dp"
+            android:layout_marginBottom="12dp"
+            android:text="clear" />
+
+
+    </RelativeLayout>
+</layout>
