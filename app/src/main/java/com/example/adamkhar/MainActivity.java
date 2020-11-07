@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             public void onClick(View v) {
                 if (states.isBoatDown()){
                     if (states.go()) {
-                        boatLayoutParams.topMargin = (int) (370 * factor);
+                        boatLayoutParams.topMargin = (int) (320 * factor);
                         binding.boat.setLayoutParams(boatLayoutParams);
                         states.setBoatDown(false);
                         for (Person person: states.inBoat)
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 }
                 else {
                     if (states.go()) {
-                        boatLayoutParams.topMargin = (int) (485 * factor);
+                        boatLayoutParams.topMargin = (int) (420 * factor);
                         binding.boat.setLayoutParams(boatLayoutParams);
                         states.setBoatDown(true);
                         for (Person person: states.inBoat)

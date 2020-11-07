@@ -27,7 +27,7 @@
             android:layout_height="110dp"
             android:src="@drawable/boat1"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="480dp" />
+            android:layout_marginTop="420dp" />
 
         <ImageView
             android:id="@+id/girl2"
@@ -35,7 +35,7 @@
             android:layout_height="75dp"
             android:src="@drawable/girl"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="650dp" />
+            android:layout_marginTop="600dp" />
 
         <ImageView
             android:id="@+id/girl1"
@@ -43,7 +43,7 @@
             android:layout_height="75dp"
             android:src="@drawable/girl"
             android:layout_marginLeft="160dp"
-            android:layout_marginTop="650dp" />
+            android:layout_marginTop="600dp" />
 
         <ImageView
             android:id="@+id/vampire1"
@@ -51,7 +51,7 @@
             android:layout_height="75dp"
             android:src="@drawable/vampire"
             android:layout_marginLeft="160dp"
-            android:layout_marginTop="560dp" />
+            android:layout_marginTop="520dp" />
 
         <ImageView
             android:id="@+id/vampire2"
@@ -59,7 +59,7 @@
             android:layout_height="75dp"
             android:src="@drawable/vampire"
             android:layout_marginLeft="220dp"
-            android:layout_marginTop="560dp"
+            android:layout_marginTop="520dp"
             tools:ignore="DuplicateIds" />
 
         <ImageView
@@ -68,7 +68,7 @@
             android:layout_height="75dp"
             android:src="@drawable/vampire"
             android:layout_marginLeft="280dp"
-            android:layout_marginTop="560dp"
+            android:layout_marginTop="520dp"
             tools:ignore="DuplicateIds" />
 
         <ImageView
@@ -77,22 +77,24 @@
             android:layout_height="75dp"
             android:src="@drawable/girl"
             android:layout_marginLeft="280dp"
-            android:layout_marginTop="650dp" />
+            android:layout_marginTop="600dp" />
 
         <Button
             android:id="@+id/go"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="610dp"
+            android:layout_marginTop="550dp"
             android:layout_marginLeft="20dp"
+            style="@style/GradientButton"
             android:text="Go" />
 
         <Button
             android:id="@+id/clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="660dp"
+            android:layout_marginTop="610dp"
             android:layout_marginLeft="20dp"
+            style="@style/GradientButton"
             android:text="clear" />
 
 

@@ -7,4 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="GradientButton">
+        <item name="android:background">@drawable/blue_gradient</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
 </resources>
