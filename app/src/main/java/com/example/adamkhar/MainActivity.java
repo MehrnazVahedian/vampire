@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Service;
+import android.os.IBinder;
 
 import com.example.adamkhar.databinding.ActivityMainBinding;
 
@@ -27,8 +30,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ActivityMainBinding binding;
     private RelativeLayout.LayoutParams boatLayoutParams;
     private States states;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         ImageView imageView = findViewById(R.id.image);
@@ -36,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mRelLay = (RelativeLayout) findViewById(R.id.relativeLayout);
         states = new States();
 
-
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.song);
+        mediaPlayer.start();
 
         for (int i = 0; i < mRelLay.getChildCount(); i++)
             mRelLay.getChildAt(i).setOnTouchListener(this);
