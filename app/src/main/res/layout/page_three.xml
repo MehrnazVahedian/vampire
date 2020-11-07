@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0064b7"
+    android:gravity="center"
+    android:paddingBottom="50dp"
+    >
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/boat1"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
+        android:paddingTop="80dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:text="@string/app_title3"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:paddingTop="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_third"
+        android:textColor="@color/color_white"
+        android:textSize="16sp"
+        android:padding="24dp"
+        android:justificationMode="inter_word"
+        android:gravity="center"
+        />
+</LinearLayout>

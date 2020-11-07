@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">adamkhar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_desc">
+        در این بازی سه دختر و سه آدم خوار در يک طرف رودخانه قرار دارند و هم چنين قايقي برای جابجایی بین دو سمت رودخانه موجود است .  برای برنده شدن راهي را بيابيد که همه را به سمت ديگر رودخانه ببرد.
+    </string>
+    <string name="app_title">بازی آدم و آدم خوار</string>
+
+    <string name="app_sec">
+      در هیچ کدام از مراحل بازی نباید تعداد آدم خوار ها در یک سمت از رودخانه بیشتر از دختر ها باشد، چون در این صورت آدم خوار ها دختران را می خورند و شما بازنده می شوید.
+    </string>
+    <string name="app_title2">قوانین بازی</string>
+
+    <string name="app_third">
+       قایق برای حرکت به حداقل یک سرنشین نیاز دارد و حداکثر ظرفیت قایق نیز دو سرنشین می باشد.
+    </string>
+    <string name="app_title3">ظرفیت قایق</string>
 </resources>

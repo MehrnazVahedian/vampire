@@ -33,16 +33,16 @@
             android:layout_width="60dp"
             android:layout_height="75dp"
             android:src="@drawable/girl"
-            android:translationX="220dp"
-            android:translationY="650dp" />
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="650dp" />
 
         <ImageView
             android:id="@+id/girl1"
             android:layout_width="60dp"
             android:layout_height="75dp"
             android:src="@drawable/girl"
-            android:translationX="160dp"
-            android:translationY="650dp" />
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="650dp" />
 
         <ImageView
             android:id="@+id/vampire1"
@@ -57,8 +57,8 @@
             android:layout_width="60dp"
             android:layout_height="75dp"
             android:src="@drawable/vampire"
-            android:translationX="220dp"
-            android:translationY="560dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="560dp"
             tools:ignore="DuplicateIds" />
 
         <ImageView
@@ -66,8 +66,8 @@
             android:layout_width="60dp"
             android:layout_height="75dp"
             android:src="@drawable/vampire"
-            android:translationX="280dp"
-            android:translationY="560dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="560dp"
             tools:ignore="DuplicateIds" />
 
         <ImageView
@@ -75,14 +75,14 @@
             android:layout_width="60dp"
             android:layout_height="75dp"
             android:src="@drawable/girl"
-            android:translationX="280dp"
-            android:translationY="650dp" />
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="650dp" />
 
         <Button
             android:id="@+id/go"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
+            android:layout_marginTop="610dp"
             android:layout_marginLeft="20dp"
             android:text="Go" />
 
@@ -90,10 +90,8 @@
             android:id="@+id/clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="302dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="660dp"
+            android:layout_marginLeft="20dp"
             android:text="clear" />
 
 

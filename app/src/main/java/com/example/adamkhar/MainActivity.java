@@ -3,9 +3,11 @@ package com.example.adamkhar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,23 +24,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private int mInitialLeft, mInitialTop;
     private View mMovingView = null;
     private TextView textView;
-    private Boolean boatDown = true;
     private ActivityMainBinding binding;
-    private ArrayList<Integer> positions;
     private RelativeLayout.LayoutParams boatLayoutParams;
-
+    private States states;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         ImageView imageView = findViewById(R.id.image);
         textView = findViewById(R.id.textView);
         mRelLay = (RelativeLayout) findViewById(R.id.relativeLayout);
-        positions = new ArrayList<Integer>(6);
+        states = new States();
 
-        for (int i = 0; i<6;i++ ) {
-            positions.add(i, 1);
-        }
+
 
         for (int i = 0; i < mRelLay.getChildCount(); i++)
             mRelLay.getChildAt(i).setOnTouchListener(this);
@@ -50,16 +48,41 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         binding.go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (boatDown){
-                    boatLayoutParams.topMargin = (int) (360 * factor);
-                    binding.boat.setLayoutParams(boatLayoutParams);
-                    boatDown = false;
-                    Toast.makeText(MainActivity.this, "go", Toast.LENGTH_SHORT).show();
+                if (states.isBoatDown()){
+                    if (states.go()) {
+                        boatLayoutParams.topMargin = (int) (370 * factor);
+                        binding.boat.setLayoutParams(boatLayoutParams);
+                        states.setBoatDown(false);
+                        for (Person person: states.inBoat)
+                        {
+                            mMovingView = findViewById(person.getView());
+                            RelativeLayout.LayoutParams personLayoutParams = (RelativeLayout.LayoutParams) mMovingView.getLayoutParams();
+                            personLayoutParams.topMargin -= 115 * factor;
+                            mMovingView.setLayoutParams(personLayoutParams);
+                        }
+
+                    }
+                    else
+                        Toast.makeText(MainActivity.this, "برای حرکت قایق حداقل 1 و حداثر 2 سرنشین باید داشته باشیم", Toast.LENGTH_LONG).show();
+
                 }
                 else {
-                    boatLayoutParams.topMargin = (int) (480 * factor);
-                    binding.boat.setLayoutParams(boatLayoutParams);
-                    boatDown = true;
+                    if (states.go()) {
+                        boatLayoutParams.topMargin = (int) (485 * factor);
+                        binding.boat.setLayoutParams(boatLayoutParams);
+                        states.setBoatDown(true);
+                        for (Person person: states.inBoat)
+                        {
+                            mMovingView = findViewById(person.getView());
+                            RelativeLayout.LayoutParams personLayoutParams = (RelativeLayout.LayoutParams) mMovingView.getLayoutParams();
+                            personLayoutParams.topMargin += 115 * factor;
+                            mMovingView.setLayoutParams(personLayoutParams);
+                        }
+                    }
+                    else
+                        Toast.makeText(MainActivity.this, "برای حرکت قایق حداقل 1 و حداثر 2 سرنشین باید داشته باشیم", Toast.LENGTH_LONG).show();
+
+
                 }
             }
         });
@@ -82,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             case MotionEvent.ACTION_DOWN:
                 mMovingView = view;
                 if (view.getId() ==  R.id.boat){
-                    Toast.makeText(this, "boat top margin: " + boatLayoutParams.topMargin, Toast.LENGTH_SHORT).show();
                     break;
                 }
                 else if (view.getId() ==  R.id.go || view.getId() ==  R.id.clear) {
@@ -100,37 +122,63 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             if (view.getId() == R.id.boat || view.getId() ==  R.id.go || view.getId() ==  R.id.clear) {
                 break;
             }
-            textView.setText("vampire : " + positions.get(0));
             mLayoutParams = (RelativeLayout.LayoutParams) mMovingView.getLayoutParams();
 
 
             if (mMovingView != null) {
-                if (boatDown) {
-                    if (mMovingView.getId() == R.id.vampire1 && positions.get(0) != 3) {
+                int arrayPosition = states.getArrayPosition(mMovingView.getId());
+                if (states.isBoatDown()) {
+                    if (arrayPosition >= 0 &&
+                            states.persons.get(arrayPosition).getPosition() != Positions.Up) {
                         mLayoutParams.leftMargin = (int) (mInitialLeft + motionEvent.getRawX() - mInitialX);
                         mLayoutParams.topMargin = (int) (mInitialTop + motionEvent.getRawY() - mInitialY);
                         if ( mLayoutParams.topMargin <= boatLayoutParams.topMargin)
                             mLayoutParams.topMargin = boatLayoutParams.topMargin ;
                         if (mLayoutParams.topMargin < boatLayoutParams.topMargin + 110 )
-                            positions.set(0 , 2);
+                            states.persons.get(arrayPosition).setPosition(Positions.Boat);
                         else
-                            positions.set(0 , 1);
+                            states.persons.get(arrayPosition).setPosition(Positions.Down);
 
                         mMovingView.setLayoutParams(mLayoutParams);
                     }
                 }
                 else {
+                    if (arrayPosition >= 0 &&
+                            states.persons.get(arrayPosition).getPosition() != Positions.Down) {
+                        mLayoutParams.leftMargin = (int) (mInitialLeft + motionEvent.getRawX() - mInitialX);
+                        mLayoutParams.topMargin = (int) (mInitialTop + motionEvent.getRawY() - mInitialY);
+                        if ( mLayoutParams.topMargin >= boatLayoutParams.topMargin)
+                            mLayoutParams.topMargin = boatLayoutParams.topMargin ;
+                        if (mLayoutParams.topMargin > boatLayoutParams.topMargin - 20)
+                            states.persons.get(arrayPosition).setPosition(Positions.Boat);
+                        else
+                            states.persons.get(arrayPosition).setPosition(Positions.Up);
 
+                        mMovingView.setLayoutParams(mLayoutParams);
+                    }
                 }
+
             }
             break;
 
         case MotionEvent.ACTION_UP:
+            if (states.gameState() == GameStates.Win) {
+                Intent i = new Intent(MainActivity.this, win.class);
+                startActivity(i);
+                finish();
+            }
+            else if (states.gameState() == GameStates.GameOver)
+            {
+                Intent i = new Intent(MainActivity.this, GameOver.class);
+                startActivity(i);
+                finish();
+            }
+
             mMovingView = null;
             break;
         }
 
-
         return true;
     }
+
 }
